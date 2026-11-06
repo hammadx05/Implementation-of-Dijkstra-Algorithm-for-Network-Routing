@@ -1,0 +1,18 @@
+# 10-node sample topology
+A, B, 2
+A, C, 5
+B, C, 1
+B, D, 4
+C, D, 3
+C, E, 6
+D, E, 2
+D, F, 7
+E, F, 1
+E, G, 4
+F, G, 3
+F, H, 5
+G, H, 2
+G, I, 6
+H, I, 1
+H, J, 4
+I, J, 3

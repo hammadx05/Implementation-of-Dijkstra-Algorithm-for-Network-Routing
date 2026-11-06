@@ -1,0 +1,59 @@
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# --- Virtual environments ---
+.venv/
+venv/
+env/
+ENV/
+.python-version
+
+# --- Testing / coverage ---
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+
+# --- IDE / editor ---
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# --- Project-generated output ---
+# Exported routing tables and Dijkstra results
+routing_*.csv
+routing_*.json
+dijkstra_*.json
+
+# Static plot exports
+*.png
+!web/static/*.png
+
+# Random topologies generated during testing
+topologies/random_*.txt
+topologies/tmp_*.txt
+
+# --- Mininet / OVS (if Mininet experiments are ever restored) ---
+*.log
+*.pcap
+*.pcapng
+mininet.log
+
+# --- Temp / scratch files ---
+*.tmp
+*.bak
+scratch/
+tmp/

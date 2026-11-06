@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NPS Dijkstra Routing Dashboard</title>
+  <link rel="stylesheet" href="/static/style.css" />
+  <script src="https://unpkg.com/cytoscape@3.28.1/dist/cytoscape.min.js"></script>
+  <script src="https://unpkg.com/cytoscape-dagre@2.5.0/cytoscape-dagre.js"></script>
+</head>
+<body>
+<header>
+  <h1>NPS — Dijkstra Network Routing Dashboard</h1>
+  <div class="subtitle">Topology &bull; Routing Table &bull; Path Query &bull; Export</div>
+</header>
+
+<main>
+  <section class="panel controls">
+    <h2>1. Topology</h2>
+    <div class="button-row">
+      <button id="btn-load-ref">Load Reference (12 nodes)</button>
+      <button id="btn-load-sample">Load Sample (10 nodes)</button>
+    </div>
+    <div class="button-row">
+      <label>Nodes: <input id="rand-nodes" type="number" value="12" min="10" max="60" /></label>
+      <label>Edge prob: <input id="rand-prob" type="number" value="0.35" min="0.05" max="1" step="0.05" /></label>
+      <button id="btn-random">Generate Random</button>
+    </div>
+    <div class="button-row">
+      <input type="file" id="file-input" accept=".txt,.csv" />
+      <button id="btn-upload">Upload</button>
+    </div>
+    <textarea id="topology-text" placeholder="A, B, 4
+B, C, 2
+..."></textarea>
+    <div class="button-row">
+      <button id="btn-load-text">Load from Text</button>
+    </div>
+    <div id="status-card" class="status-card">
+      <span>No topology loaded.</span>
+    </div>
+  </section>
+
+  <section class="panel graph-panel">
+    <h2>2. Topology Graph</h2>
+    <div id="cy"></div>
+    <div class="legend">
+      <span class="dot node-default"></span> node
+      <span class="dot node-source"></span> source
+      <span class="dot node-dest"></span> destination
+      <span class="line edge-path"></span> shortest path
+    </div>
+  </section>
+
+  <section class="panel routing-panel">
+    <h2>3. Dijkstra &amp; Routing Table</h2>
+    <div class="button-row">
+      <label>Source: <select id="source-select"></select></label>
+      <button id="btn-run-dijkstra">Run Dijkstra</button>
+      <button id="btn-export-csv">Export CSV</button>
+      <button id="btn-export-json">Export JSON</button>
+    </div>
+    <div id="stats" class="stats"></div>
+    <table id="routing-table">
+      <thead>
+        <tr><th>Destination</th><th>Next Hop</th><th>Cost</th><th>Path</th></tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+    <div id="unreachable" class="warn"></div>
+  </section>
+
+  <section class="panel query-panel">
+    <h2>4. Path Query</h2>
+    <div class="button-row">
+      <label>From: <select id="q-source"></select></label>
+      <label>To: <select id="q-dest"></select></label>
+      <button id="btn-query">Find Path</button>
+    </div>
+    <div id="query-result"></div>
+    <div class="button-row">
+      <button id="btn-plot-topology">Download Topology PNG</button>
+      <button id="btn-plot-tree">Download Shortest-Path Tree PNG</button>
+      <button id="btn-plot-path">Download Path PNG</button>
+    </div>
+  </section>
+</main>
+
+<script src="/static/dashboard.js"></script>
+</body>
+</html>
